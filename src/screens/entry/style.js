@@ -2,11 +2,8 @@ import { StyleSheet } from "react-native";
 
 export default styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: '100%',
     backgroundColor: '#6599EE',
-    alignItems: 'center',
-    position: 'absolute'
+    alignItems: 'center',   
   },
 
   timestamp: {
@@ -15,6 +12,8 @@ export default styles = StyleSheet.create({
     marginTop: 15,
     width: 300,
     padding: 3,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
 
   checkEntry: {
@@ -22,6 +21,7 @@ export default styles = StyleSheet.create({
     borderRadius: 15,
     width: 340,
     padding: 10,
+    marginBottom: 10,
   },
 
   title: {
