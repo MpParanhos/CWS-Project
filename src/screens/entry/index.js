@@ -1,8 +1,11 @@
 //importations
 import { useState, useEffect } from "react";
-import { View, Text, TextInput, ScrollView, SafeAreaView } from "react-native";
+import { View, Text, TextInput,  ScrollView, SafeAreaView } from "react-native";
 import { RadioButton } from "react-native-paper";
+import SelectDropdown from "react-native-select-dropdown";
 import styles from './style';
+import CarItens from "../../components/itens/carItens";
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 export default function Entry(){
@@ -11,6 +14,11 @@ export default function Entry(){
   const [currentDate, setCurrentDate] = useState('');
   const [currentTime, setCurrentTime] = useState('');
   const [checked, setChecked] = useState('');
+
+  //Tires and fuel arrays
+  const tiresBrand = ['Bridgestone', 'Continental', 'Firestone', 'Goodyear', 'Pirelli', 'Michellin', 'Outro']
+  const tires = ['Ok', 'Desgaste Irregular', 'Desgaste Normal', 'Furado/Cortado', 'Bolha', 'Faltante']
+  const fuel = ['Vazio', '1/4', '2/4', '3/4', '4/4']
 
   //UseEffect to get the exact date
   useEffect(() => {
@@ -39,6 +47,10 @@ export default function Entry(){
 
   return(
     <SafeAreaView style={styles.container}>
+      <LinearGradient 
+        colors={['#6599ee', '#266cdd', '#c2c2c2']}
+        style={styles.background}
+      />
       <ScrollView>
         {/* View of Timestamp, shows the exactly time that the button was clicked */}
         <View style={styles.timestamp}>
@@ -176,6 +188,265 @@ export default function Entry(){
             <TextInput style={{borderWidth: 1, borderColor: 'black', flex: 1, paddingLeft: 2, height: 20, borderRadius: 3, width: 100, textAlign:'center'}}/>
           </View>
         </View>
+        {/* View of title */}
+        <View style={{alignItems:'center'}}>
+          <Text style={styles.subtitle}>Itens</Text>
+        </View>
+        {/* This view is about the itens that there is in the car */}
+        <View style={styles.checkEntry}>
+          <CarItens />
+        </View>
+        {/* View of title */}
+        <View style={{alignItems:'center'}}>
+          <Text style={styles.subtitle}>Detalhes</Text>
+        </View>
+        {/* This view is about the details of the car */}
+        <View style={styles.checkEntry}>
+          <Text>Imagens do carro</Text>
+        </View>
+        {/* View of title */}
+        <View style={{alignItems:'center'}}>
+          <Text style={styles.subtitle}>Pneus e combustível</Text>
+        </View>
+        {/* This view is about the tires of the car */}
+        <View style={styles.checkEntry}>
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={{ flex: 1, fontWeight: 'bold', fontSize: 15 }}>Pneu</Text>
+            <Text style={{ flex: 2, fontWeight: 'bold', fontSize: 15, marginLeft: 10 }}>Marca</Text>
+            <Text style={{ flex: 1, fontWeight: 'bold', fontSize: 15, marginLeft: -15}}>Estado</Text>
+          </View>
+          <View style={{justifyContent: 'space-between', flexDirection: 'row', alignItems:'center', alignContent:'center'}}>
+            <Text style={{fontWeight: 'bold', fontSize: 20}}>DD</Text>
+            <SelectDropdown
+              data={tiresBrand}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                return item
+              }}
+              defaultButtonText='Selecione a marca'
+              buttonStyle={{borderRadius: 5, height: 20, width: 130, fontSize: 5}}
+              buttonTextStyle={{fontSize: 11}}
+              dropdownStyle={{borderRadius: 5 }}
+              rowTextStyle={{fontSize: 10}}
+            />
+            <SelectDropdown
+              data={tires}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                return item
+              }}
+              defaultButtonText='Estado do pneu'
+              buttonStyle={{borderRadius: 5, height: 20, width: 130, fontSize: 5}}
+              buttonTextStyle={{fontSize: 11}}
+              dropdownStyle={{borderRadius: 5 }}
+              rowTextStyle={{fontSize: 10}}
+            />
+          </View>
+          <View style={{justifyContent: 'space-between', flexDirection: 'row', alignItems:'center', alignContent:'center', marginTop:5}}>
+            <Text style={{fontWeight: 'bold', fontSize: 20}}>DE</Text>
+            <SelectDropdown
+              data={tiresBrand}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                return item
+              }}
+              defaultButtonText='Selecione a marca'
+              buttonStyle={{borderRadius: 5, height: 20, width: 130, fontSize: 5}}
+              buttonTextStyle={{fontSize: 11}}
+              dropdownStyle={{borderRadius: 5 }}
+              rowTextStyle={{fontSize: 10}}
+            />
+            <SelectDropdown
+              data={tires}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                return item
+              }}
+              defaultButtonText='Estado do pneu'
+              buttonStyle={{borderRadius: 5, height: 20, width: 130, fontSize: 5}}
+              buttonTextStyle={{fontSize: 11}}
+              dropdownStyle={{borderRadius: 5 }}
+              rowTextStyle={{fontSize: 10}}
+            />
+          </View>
+          <View style={{justifyContent: 'space-between', flexDirection: 'row', alignItems:'center', alignContent:'center', marginTop:5}}>
+            <Text style={{fontWeight: 'bold', fontSize: 20}}>TE</Text>
+            <SelectDropdown
+              data={tiresBrand}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                return item
+              }}
+              defaultButtonText='Selecione a marca'
+              buttonStyle={{borderRadius: 5, height: 20, width: 130, fontSize: 5}}
+              buttonTextStyle={{fontSize: 11}}
+              dropdownStyle={{borderRadius: 5 }}
+              rowTextStyle={{fontSize: 10}}
+            />
+            <SelectDropdown
+              data={tires}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                return item
+              }}
+              defaultButtonText='Estado do pneu'
+              buttonStyle={{borderRadius: 5, height: 20, width: 130, fontSize: 5}}
+              buttonTextStyle={{fontSize: 11}}
+              dropdownStyle={{borderRadius: 5 }}
+              rowTextStyle={{fontSize: 10}}
+            />
+          </View>
+          <View style={{justifyContent: 'space-between', flexDirection: 'row', alignItems:'center', alignContent:'center', marginTop:5}}>
+            <Text style={{fontWeight: 'bold', fontSize: 20}}>TD</Text>
+            <SelectDropdown
+              data={tiresBrand}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                return item
+              }}
+              defaultButtonText='Selecione a marca'
+              buttonStyle={{borderRadius: 5, height: 20, width: 130, fontSize: 5}}
+              buttonTextStyle={{fontSize: 11}}
+              dropdownStyle={{borderRadius: 5 }}
+              rowTextStyle={{fontSize: 10}}
+            />
+            <SelectDropdown
+              data={tires}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                return item
+              }}
+              defaultButtonText='Estado do pneu'
+              buttonStyle={{borderRadius: 5, height: 20, width: 130, fontSize: 5}}
+              buttonTextStyle={{fontSize: 11}}
+              dropdownStyle={{borderRadius: 5 }}
+              rowTextStyle={{fontSize: 10}}
+            />
+          </View>
+          <View style={{justifyContent: 'space-between', flexDirection: 'row', alignItems:'center', alignContent:'center', marginTop:5}}>
+            <Text style={{fontSize: 15, fontWeight:'bold'}}>Estepe</Text>
+            <SelectDropdown
+              data={tiresBrand}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                return item
+              }}
+              defaultButtonText='Selecione a marca'
+              buttonStyle={{borderRadius: 5, height: 20, width: 130, fontSize: 5, marginRight: -20}}
+              buttonTextStyle={{fontSize: 11}}
+              dropdownStyle={{borderRadius: 5 }}
+              rowTextStyle={{fontSize: 10}}
+            />
+            <SelectDropdown
+              data={tires}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                return item
+              }}
+              defaultButtonText='Estado do pneu'
+              buttonStyle={{borderRadius: 5, height: 20, width: 130, fontSize: 5}}
+              buttonTextStyle={{fontSize: 11}}
+              dropdownStyle={{borderRadius: 5 }}
+              rowTextStyle={{fontSize: 10}}
+            />
+          </View>
+          <View style={{flexDirection: 'row', alignItems:'center', alignContent:'center', justifyContent: 'center', marginTop:5}}>
+            <Text style={{fontSize: 15, fontWeight:'bold', marginEnd: 5}}>Combustível</Text>
+            <SelectDropdown
+              data={fuel}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index)
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem
+              }}
+              rowTextForSelection={(item, index) => {
+                return item
+              }}
+              defaultButtonText='Quantidade'
+              buttonStyle={{borderRadius: 5, height: 20, width: 130, fontSize: 5}}
+              buttonTextStyle={{fontSize: 11}}
+              dropdownStyle={{borderRadius: 5 }}
+              rowTextStyle={{fontSize: 10}}
+            />
+          </View>          
+        </View>
+        <View style={styles.checkEntry}>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={{marginRight: 10, flex: 1, textAlign:'center', fontWeight: 'bold', fontSize: 20}}>Observações:</Text>
+          </View>
+          <View style={{ flexDirection: 'row'}}>
+            <TextInput style={{borderWidth: 1, borderColor: 'black', flex: 1, paddingLeft: 2, minHeight: 60, borderRadius: 3, textAlignVertical: "top", marginBottom: 10}} multiline={true} />  
+          </View>
+        </View>
+        <View style={{width: 340, padding: 10, marginBottom: 10, alignItems:'center'}}>          
+          <Text style={{textAlign: 'justify'}}>
+            Ao deixar seu carro na oficina, solicitamos que o mesmo esteja limpo para que tenhamos o 
+            preenchimento do checklist e fotos mais próximo do real estado, a sujeira esconde pequenos 
+            riscos dificultando assim identificarmos a sua origem, desta forma será utilizado o bom senso 
+            para possíveis garantias, trabalhamos com prazos flutuantes de acordo com volume e dificuldade 
+            de serviço, que será contado em dias úteis e passado após a chegada de todas as peças, pois 
+            as mesmas são essenciais para o início dos reparos, sugerimos que as informações da situação 
+            do seu veículo seja feita através de telefone a partir do 5º dia da entrada do veículo, 
+            nossas informações são atualizadas toda semana, hoje estamos com média de:
+          </Text>
+          <TextInput style={{borderBottomWidth:1, borderColor:'black', height: 20, fontSize: 20, textAlign:'center', fontWeight:'bold', marginTop: -15}} keyboardType='number-pad'/>
+          <Text style={{textAlign: 'justify'}}>
+            dias úteis para reparo dos veículos em nossa oficina, para sua segurança as visitas para 
+            acompanhamento dos reparos em seu veículo devem ser agendadas por email.
+          </Text>
+          <Text style={{fontSize:20, fontWeight:'bold'}}>orcamentoclassworkshop@gmail.com</Text>
+        </View>        
       </ScrollView>
     </SafeAreaView>
   )
