@@ -1,6 +1,7 @@
 //importations
+import React, { useRef } from 'react';
 import { useState, useEffect } from "react";
-import { View, Text, TextInput,  ScrollView, SafeAreaView } from "react-native";
+import { View, Text, TextInput,  ScrollView, SafeAreaView, TouchableOpacity, Button } from "react-native";
 import { RadioButton } from "react-native-paper";
 import SelectDropdown from "react-native-select-dropdown";
 import styles from './style';
@@ -8,9 +9,11 @@ import CarItens from "../../components/itens/carItens";
 import { LinearGradient } from 'expo-linear-gradient';
 
 
+
 export default function Entry(){
 
   //UseStates on the app
+  const [name, setName] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const [currentTime, setCurrentTime] = useState('');
   const [checked, setChecked] = useState('');
@@ -44,6 +47,7 @@ export default function Entry(){
       hour + ':' + min
     );
   }, []);
+
 
   return(
     <SafeAreaView style={styles.container}>
@@ -99,7 +103,9 @@ export default function Entry(){
             </View> 
             <View style={{justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
               <Text>Nome:</Text>
-              <TextInput style={{marginLeft: 2, borderWidth: 1, borderColor: 'black', paddingLeft: 2, height: 15, borderRadius: 3, width: 150, fontSize: 10}}/>
+              <TextInput style={{marginLeft: 2, borderWidth: 1, borderColor: 'black', paddingLeft: 2, height: 15, borderRadius: 3, width: 150, fontSize: 10}} 
+              onChangeText={setName}
+              value={name} />
             </View>
           </View>
           <View style={{justifyContent: 'space-between', flexDirection: 'row', marginTop: 15}}>
@@ -446,7 +452,11 @@ export default function Entry(){
             acompanhamento dos reparos em seu veículo devem ser agendadas por email.
           </Text>
           <Text style={{fontSize:20, fontWeight:'bold'}}>orcamentoclassworkshop@gmail.com</Text>
-        </View>        
+        </View>  
+        <View style={{width: 340, padding: 10, marginBottom: 10, alignItems:'center'}}>        
+                    
+        <Text>Responsável pelo recebimento</Text>
+      </View>      
       </ScrollView>
     </SafeAreaView>
   )
