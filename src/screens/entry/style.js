@@ -50,4 +50,16 @@ export default styles = StyleSheet.create({
     marginLeft: 10
   },
 
+  signatureContainer: {
+    width: '80%',
+    height: 200,
+    borderWidth: 1,
+    borderColor: 'black',
+    marginVertical: 20,
+  },
+  
+  signatureImage: {
+    width: '100%',
+    height: '100%',
+  },
 });

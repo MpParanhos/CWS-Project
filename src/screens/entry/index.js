@@ -1,18 +1,26 @@
 //importations
-import React, { useRef } from 'react';
-import { useState, useEffect } from "react";
-import { View, Text, TextInput,  ScrollView, SafeAreaView, TouchableOpacity, Button } from "react-native";
+import React, { useContext } from 'react';
+import { useState, useEffect, useRef } from "react";
+import { View, Text, TextInput,  ScrollView, SafeAreaView, TouchableOpacity, Button, Image } from "react-native";
 import { RadioButton } from "react-native-paper";
 import SelectDropdown from "react-native-select-dropdown";
 import styles from './style';
 import CarItens from "../../components/itens/carItens";
 import { LinearGradient } from 'expo-linear-gradient';
-
-
+import { useNavigation } from '@react-navigation/native'
+import { SignatureContext } from '../../components/signatureContext';
 
 export default function Entry(){
 
+  const navi = useNavigation();
+  function goToSignature(){
+    navi.navigate('signature');
+}
+
+  // const {signature} = useContext(SignatureContext);
+
   //UseStates on the app
+  
   const [name, setName] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const [currentTime, setCurrentTime] = useState('');
@@ -47,7 +55,6 @@ export default function Entry(){
       hour + ':' + min
     );
   }, []);
-
 
   return(
     <SafeAreaView style={styles.container}>
@@ -453,10 +460,15 @@ export default function Entry(){
           </Text>
           <Text style={{fontSize:20, fontWeight:'bold'}}>orcamentoclassworkshop@gmail.com</Text>
         </View>  
-        <View style={{width: 340, padding: 10, marginBottom: 10, alignItems:'center'}}>        
-                    
-        <Text>Responsável pelo recebimento</Text>
-      </View>      
+        <View style={{width: 340, padding: 10, marginBottom: 10, alignItems:'center'}}> 
+        {/*  {signature && <Image source={{ uri: signature }} style={styles.signatureImage} />} */}
+          <TouchableOpacity style={styles.btn} onPress={ goToSignature }>
+            <View style={styles.button}>
+              <Text style={styles.textBtn}>Assinar</Text>
+            </View>
+          </TouchableOpacity>
+          <Text>Responsável pelo recebimento</Text>
+        </View>      
       </ScrollView>
     </SafeAreaView>
   )
